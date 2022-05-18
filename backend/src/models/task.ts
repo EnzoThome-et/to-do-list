@@ -7,7 +7,7 @@ interface TaskDocument extends Task, Document {}
 const taskSchema = new Schema<TaskDocument>({
 	text: String,
 	status: String
-}, { versionKey: false });
+}, { versionKey: false, timestamps: true });
 
 class TaskModel extends MongoModel<Task> {
 	constructor(model = createModel('Tasks', taskSchema)) {
