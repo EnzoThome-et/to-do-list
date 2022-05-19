@@ -11,7 +11,8 @@ connectToDatabase();
 app.use(express.json());
 
 app.post('/tasks', tasksController.create);
-app.get('tasks', tasksController.getAll);
+app.get('/tasks', tasksController.getAll);
+app.delete('/task/:id', tasksController.deleteOne);
 
 try {
 	app.listen(port, (): void => {
