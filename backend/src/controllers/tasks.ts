@@ -15,4 +15,14 @@ const create = async (req: Request, res: Response) => {
 	}
 };
 
-export {create};
+
+const getAll = async (_req: Request, res: Response) => {
+	try {
+		const task = await tasksService.getAll();
+		return res.status(201).json(task);
+	} catch (error) {
+		return res.status(500).json(error);
+	}
+};
+
+export {create, getAll};

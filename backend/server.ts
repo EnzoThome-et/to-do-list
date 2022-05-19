@@ -11,6 +11,7 @@ connectToDatabase();
 app.use(express.json());
 
 app.post('/tasks', tasksController.create);
+app.get('tasks', tasksController.getAll);
 
 try {
 	app.listen(port, (): void => {
