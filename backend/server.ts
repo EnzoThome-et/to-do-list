@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import 'dotenv/config';
 import * as tasksController from './src/controllers/tasks';
 import connectToDatabase from './connection';
+import cors from 'cors';
 
 const app: Application = express();
 const port = process.env.PORT || 3001;
@@ -9,6 +10,7 @@ const port = process.env.PORT || 3001;
 connectToDatabase();
 
 app.use(express.json());
+app.use(cors());
 
 app.post('/tasks', tasksController.create);
 app.put('/task/:id', tasksController.update);
