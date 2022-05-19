@@ -1,14 +1,16 @@
-import { Dispatch, SetStateAction } from 'react';
 
-export interface Task {
-    _id: string
+
+interface formData {
     text: string
     status: string
+}
+
+export interface Task extends formData {
+    _id: string
     createdAt: string
     updatedAt: string
 }
-
 export interface TaskContextType {
     tasks: Task[]
-    setTasks: Dispatch<SetStateAction<never[]>>
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
 }
