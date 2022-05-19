@@ -11,6 +11,7 @@ connectToDatabase();
 app.use(express.json());
 
 app.post('/tasks', tasksController.create);
+app.put('/task/:id', tasksController.update);
 app.get('/tasks', tasksController.getAll);
 app.delete('/task/:id', tasksController.deleteOne);
 

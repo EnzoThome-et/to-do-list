@@ -15,6 +15,18 @@ const create = async (req: Request, res: Response) => {
 	}
 };
 
+const update = async (req: Request, res: Response) => {
+	try {
+		const {id} = req.params;
+		const data = req.body;
+		const task = await tasksService.update(id, data);
+		return task
+			? res.status(201).json(task)
+			: res.status(404).json({ error: 'task not found'});
+	} catch (error) {
+		return res.status(500).json(error);
+	}
+};
 
 const getAll = async (_req: Request, res: Response) => {
 	try {
@@ -35,4 +47,4 @@ const deleteOne = async (req: Request, res: Response) => {
 	}
 };
 
-export {create, getAll, deleteOne};
+export {create, getAll, deleteOne, update};
