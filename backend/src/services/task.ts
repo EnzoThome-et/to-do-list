@@ -17,4 +17,9 @@ const getAll = async () => {
 	return tasks;
 };
 
-export { create, getAll };
+const deleteOne = async (id: string) => {
+	const task = await model.delete(id);
+	return task;
+};
+
+export { create, getAll, deleteOne };

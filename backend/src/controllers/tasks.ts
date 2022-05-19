@@ -29,10 +29,7 @@ const deleteOne = async (req: Request, res: Response) => {
 	try {
 		const { id } = req.params;
 		const task = await tasksService.deleteOne(id);
-		if ('error' in task) {
-			return res.status(400).json(task);
-		}
-		return res.status(201).json(task);
+		return res.status(200).json(task);
 	} catch (error) {
 		return res.status(500).json(error);
 	}
