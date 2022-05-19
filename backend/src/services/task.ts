@@ -12,4 +12,9 @@ const create = async (data: Task) => {
 	return task;  
 };
 
-export { create };
+const getAll = async () => {
+	const tasks = await model.read();
+	return tasks;
+};
+
+export { create, getAll };
