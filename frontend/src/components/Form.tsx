@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { HookForm } from '../interface/hookForm';
+import Context from '../context/context';
 
 
 const Form = (props: HookForm) => {
 	const {register, errors, handleSubmit} = props;
-	const [result, setResult] = useState({});
+	const { setTasks } = useContext(Context);
 	return (
 		<form className="w-50 p-3" onSubmit={handleSubmit(async (data) => {
 			await axios({
@@ -15,7 +16,7 @@ const Form = (props: HookForm) => {
 			});
 			const result = await axios.get('http://localhost:3001/tasks');
 			console.log(result.data);
-			setResult(result.data);
+			setTasks(result.data);
 		})}>
 			<div className="form-outline mb-4 d-flex">
 				<input type="text" className="form-control" id="datatable-search-input" {...register('text', { required: true })}/>
