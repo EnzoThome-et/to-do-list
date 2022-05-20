@@ -1,5 +1,3 @@
-
-
 interface formData {
     text: string
     status: string
@@ -10,7 +8,10 @@ export interface Task extends formData {
     createdAt: string
     updatedAt: string
 }
-export interface TaskContextType {
+
+export interface Tasks {
     tasks: Task[]
+}
+export interface TaskContextType extends Tasks {
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>
 }
