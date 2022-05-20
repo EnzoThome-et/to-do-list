@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { HookForm } from '../interface/hookForm';
 import Context from '../context/context';
-import { Task, TaskContextType } from '../interface/task';
+import { TaskContextType } from '../interface/task';
 
 
 const Form = (props: HookForm) => {
 	const {register, errors, handleSubmit} = props;
 	const { setTasks } = useContext(Context) as TaskContextType;
+
+	useEffect(() => {
+		const fetch = async () => {
+			const result = await axios.get('http://localhost:3001/tasks');
+			await setTasks(result.data);
+		};
+		fetch();
+	}, []);
+
 	return (
 		<form className="w-50 p-3" onSubmit={handleSubmit(async (data) => {
 			await axios({
