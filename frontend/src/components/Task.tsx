@@ -1,14 +1,14 @@
 import React from 'react';
 import { Task } from '../interface/task';
 
-const Task = (Task: Task) => {
+const TaskElement = ({text, status, createdAt, updatedAt, _id}: Task) => {
 	return (
 		<tbody>
-			<td>{Task.text}</td>
-			<td>{Task.status}</td>
-			<td>{Task.createdAt}</td>
+			<td>{text}</td>
+			<td>{status}</td>
+			<td>{createdAt}</td>
 		</tbody>
 	);
 };
 
-export default Task;
+export default TaskElement;
