@@ -5,7 +5,6 @@ import { Task } from '../interface/task';
 
 const AppProvider = ({ children } : {children: React.ReactNode}) => {
 	const [tasks, setTasks] = useState<Task[]>([]);
-
 	const defaultState = {
 		tasks,
 		setTasks
