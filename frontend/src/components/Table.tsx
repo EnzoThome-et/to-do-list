@@ -1,6 +1,8 @@
 import React from 'react';
+import { Tasks } from '../interface/task';
+import TaskElement from './Task';
 
-const Table = () => {
+const Table = ({tasks}: Tasks) => {
 	return (
 		<table className="table w-50 p-3">
 			<thead>
@@ -10,9 +12,9 @@ const Table = () => {
 					<th scope="col">Date</th>
 				</tr>
 			</thead>
-			<tbody className="tableData">
-			</tbody>
+			{tasks.map(({_id, text, status, createdAt, updatedAt}) => <TaskElement key={_id} _id={_id} text={text} status={status} createdAt={createdAt} updatedAt={updatedAt} />)}
 		</table>
+
 	);
 };
 
